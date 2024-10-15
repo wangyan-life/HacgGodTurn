@@ -103,9 +103,9 @@
 // @grant       GM_getValue
 // @grant       unsafeWindow
 // @run-at      document-end
-// @require     https://raw.githubusercontent.com/wangyan-life/HacgGodTurn/refs/heads/main/od.js
-// @require     https://raw.githubusercontent.com/wangyan-life/HacgGodTurn/refs/heads/main/core-min.js
-// @require     https://raw.githubusercontent.com/wangyan-life/HacgGodTurn/refs/heads/main/aes.js
+// @require     https://update.greasyfork.org/scripts/512762/1465452/od.js
+// @require     https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js
+// @require     https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js
 // @license     MIT License
 // @connect     tts.baidu.com
 // @compatible        chrome
