@@ -820,8 +820,8 @@
         head.appendChild(hideNode);
     }
     document.addEventListener("keydown", function(e) {
-        if(curArticle && e.keyCode != 17)curArticle.classList.remove("oD_sel");
-        if(e.keyCode == 119) {
+        if(curArticle && e.code !== 'ControlLeft' && e.code !== 'ControlRight') curArticle.classList.remove("oD_sel");
+        if(e.code === 'F8') {
             if(e.altKey){
                 rocketContent.style.display="block";
                 var rocketLinks=document.querySelector("div#rocketLinks");
@@ -844,11 +844,11 @@
             }
             return false;
         }else{
-            if(e.keyCode>36 && e.keyCode<41 && !e.shiftKey && !e.altKey){
+            if((e.code === 'ArrowUp' || e.code === 'ArrowDown' || e.code === 'ArrowLeft' || e.code === 'ArrowRight') && !e.shiftKey && !e.altKey){
                 if(/INPUT|TEXTAREA/.test(document.activeElement.tagName))return;
                 var article, isFind, index, articles=document.querySelectorAll(articleSel);
-                var scrollTop = window.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop  || 0;
-                if(e.keyCode==39){
+                var scrollTop = window.scrollY || document.documentElement.scrollTop  || document.body.scrollTop  || 0;
+                if(e.code === 'ArrowRight'){
                     if(e.ctrlKey){
                         var next=getPage().next;
                         if(next)next.click();
@@ -875,7 +875,7 @@
                             scrollTo(0,document.body.scrollHeight);
                         }
                     }
-                }else if(e.keyCode==37){
+                }else if(e.code === 'ArrowLeft'){
                     if(e.ctrlKey){
                         var pre=getPage().pre;
                         if(pre)pre.click();
@@ -902,10 +902,10 @@
                             scrollTo(0,0);
                         }
                     }
-                }else if(e.ctrlKey && e.keyCode==38){
+                }else if(e.ctrlKey && e.code === 'ArrowUp'){
                     history.go(-1);
                     return false;
-                }else if(e.ctrlKey && e.keyCode==40){
+                }else if(e.ctrlKey && e.code === 'ArrowDown'){
                     if(curArticle){
                         let aLink=curArticle.querySelector("a:not(.label)");
                         if(aLink){
@@ -934,8 +934,8 @@
                         }
                     }
                 }
-            }else if(e.keyCode != 17){
-                if(e.ctrlKey && e.keyCode==90){
+            }else if(e.code !== 'ControlLeft' && e.code !== 'ControlRight'){
+                if(e.ctrlKey && e.code === 'KeyZ'){
                     if(hideNode.parentNode){
                         head.removeChild(hideNode);
                         GM_setValue("hacgGodeTurnHideImg",false);
@@ -971,7 +971,7 @@
         rocketContent.style.display="none";
     };
     document.addEventListener("keydown", function(e) {
-        if(e.keyCode == 27) {
+        if(e.code === 'Escape') {
             rocketContent.style.display="none";
         }
     });
@@ -1354,17 +1354,17 @@
         });
         var command=[72,65,90,85,75,65,83,72,73,73],index=0;//"hazukashii"
         document.addEventListener("keydown", function(e) {
-            if(e.keyCode==command[index]) {
-                if(index==command.length-1){
-                    index=0;
-                    var nowValue=GM_getValue("hazukashii");
+            if(e.code == command[index]) {
+                if(index == command.length - 1) {
+                    index = 0;
+                    var nowValue = GM_getValue("hazukashii");
                     GM_setValue("hazukashii", !nowValue);
-                    if(nowValue){
+                    if(nowValue) {
                         p.then(playSound, function(e) {
                             console.log(e);
                         });
                     }
-                }else{
+                } else {
                     index++;
                 }
             }else{
