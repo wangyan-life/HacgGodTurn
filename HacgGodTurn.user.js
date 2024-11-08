@@ -43,8 +43,6 @@
 // @include     http*://www.moxacg.com/*
 // @include     http*://moxacg.*
 // @include     http*://*.acggj.com/*
-// @include     http*://acgso1.com/*
-// @include     http*://*.acgso1.com/*
 // @include     http*://www.tianshit.com/*
 // @include     http*://www.tianshif.com/*
 // @include     http*://www.tianshie.com/*
@@ -285,14 +283,6 @@
                 url:"https://www.tianshie.com/",
                 regex:/tianshi.\./,
                 contentArea:'.article-content'
-            },
-            {
-                name:"ACG调查小队",
-                url:"https://acgso1.com/",
-                regex:/acgso1\./,
-                hideOd:true,
-                offset:55,
-                articleSel:"article,section.card"
             },
             {
                 name:"爱弹幕",
